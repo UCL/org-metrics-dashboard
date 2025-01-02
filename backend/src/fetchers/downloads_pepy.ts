@@ -23,23 +23,40 @@ export interface PePyResult {
 }
 
 const fetchDownloads = async (projectName: string) => {
-  try {
-    const response = await fetch(`https://api.pepy.tech/api/v2/projects/${projectName}`, {
-      headers: {
-        'X-Api-Key': process.env.PEPY_API_KEY!,
+  let retries = 2;
+  // PePy API has a rate limit of 10 requests per minute
+  let sleep_time = 60_000;
+  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+  while (retries > 0) {
+    try {
+      const response = await fetch(`https://api.pepy.tech/api/v2/projects/${projectName}`, {
+        headers: {
+          'X-Api-Key': process.env.PEPY_API_KEY!,
+        }
+      });
+
+      if (!response.ok && response.status === 404) {
+        console.error(`Project ${projectName} not found on PePy`);
+        return null;
       }
-    });
 
-    if (!response.ok) {
-      console.error(`Error fetching download data for project ${projectName}: ${response.statusText}`);
-      return null;
+      if (!response.ok && response.status === 429) {
+        console.error(`Error fetching download data for project ${projectName}: ${response.statusText}`);
+        console.error(`Retrying in ${sleep_time}ms`);
+        retries--;
+        await sleep(sleep_time);
+      }
+
+      return await response.json() as PePyResult;
+    } catch (error) {
+      console.error(`Error fetching download data for project ${projectName}:`, error);
+      console.error(`Retrying in ${sleep_time}ms`);
+      retries--;
+      await sleep(sleep_time);
     }
-
-    return await response.json() as PePyResult;
-  } catch (error) {
-    console.error(`Error fetching download data for project ${projectName}:`, error);
-    return null;
   }
+
+  return null;
 };
 
 const queryProjectsForRepositories = async (repositories: Repository[]) => {
