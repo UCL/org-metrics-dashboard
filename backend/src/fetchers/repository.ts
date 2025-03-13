@@ -98,7 +98,8 @@ export const addRepositoriesToResult: Fetcher = async (
   }
 
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-  while (contributorsWaiting.length > 0) {
+  let maxRetries = 20;
+  while (contributorsWaiting.length > 0 && maxRetries > 0) {
     console.log(`Waiting for contributors data from ${contributorsWaiting.length} repositories to be ready`);
     await sleep(60000);
     const stillWaiting: Repository[] = []
@@ -122,6 +123,7 @@ export const addRepositoriesToResult: Fetcher = async (
     }
 
     contributorsWaiting = stillWaiting
+    maxRetries--;
   }
 
   return {
