@@ -22,6 +22,7 @@ const nextConfig = {
   productionBrowserSourceMaps: true,
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx', 'json'],
   basePath: process.env.NODE_ENV === 'development' ? '' : productionBasePath,
+  output: 'export',
   webpack: (config) => {
     config.module.rules.push({
       test: /\.md$/,
