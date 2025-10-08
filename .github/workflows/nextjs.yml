@@ -94,7 +94,7 @@ jobs:
       - name: Static HTML export with Next.js
         run: cd "${{ github.workspace }}/app" && ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: '${{ github.workspace }}/app/out'
   # Deployment job
