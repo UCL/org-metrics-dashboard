@@ -6,7 +6,6 @@ export interface RepositoryResult {
   topics: string[];
 
   // Counts of various things
-  projectsCount: number;
   projectsV2Count: number;
   discussionsCount: number;
   forksCount: number;
@@ -20,6 +19,14 @@ export interface RepositoryResult {
   watchersCount: number;
   starsCount: number;
   collaboratorsCount: number;
+  downloadCount: number;
+  totalDownloadCount: number;
+  monthlyDownloadCount: number;
+  weeklyDownloadCount: number;
+  dailyDownloadCount: number;
+  contributorsCount: number;
+  condaTotalDownloads: number;
+  condaMonthlyDownloads: number;
 
   // Flags
   discussionsEnabled: boolean;
