@@ -1,10 +1,10 @@
 ---
-# Organization to pull metrics from
-organization: 'UCL'
+# Organization to pull metrics from (must be an array)
+organization: ['ucl']
 
 # Start date to pull metrics from
-since: '2023-01-01'
+since: '2018-01-02'
 
 # GitHub Pages path to the repository
 # Used for handling relative paths for assets
-basePath: '/org-metrics-dashboard'
+basePath: '/open-source-dashboard'

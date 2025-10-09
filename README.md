@@ -83,6 +83,8 @@ The `GRAPHQL_TOKEN` token requires the following scopes:
 > [!NOTE]
 > To fetch collaborator counts, you need to provide a token that is an admin of the organization.
 
+The `PEPY_API_KEY` must be set in the `.env` file to fetch package download data.
+
 ### Installation
 
 ```sh
