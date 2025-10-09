@@ -62,16 +62,9 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
           href={`${basePath}/`}
           selected={
             !router.pathname.includes('documentation') &&
-            !router.pathname.includes('brainglobe')
           }
         >
           NIU Repositories
-        </TabNav.Link>
-        <TabNav.Link
-          href={`${basePath}/brainglobe`}
-          selected={router.pathname.includes('brainglobe')}
-        >
-          BrainGlobe Repositories
         </TabNav.Link>
         <TabNav.Link
           href={`${basePath}/documentation`}

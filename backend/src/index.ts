@@ -11,7 +11,6 @@ import {
   addMetaToResult,
   addOrganizationInfoToResult,
   addRepositoriesToResult,
-  addDownloadsPePy,
 } from './fetchers';
 import { CustomOctokit, checkRateLimit, personalOctokit } from './lib/octokit';
 import { addCondaData } from './fetchers/fetch_parquet';
@@ -51,11 +50,6 @@ export interface Config {
 if (!process.env.GRAPHQL_TOKEN) {
   console.log('GRAPHQL_TOKEN environment variable is required, exiting...');
   throw new Error('GRAPHQL_TOKEN environment variable is required!');
-}
-
-if (!process.env.PEPY_API_KEY) {
-  console.log('PEPY_API_KEY environment variable is required, exiting...');
-  throw new Error('PEPY_API_KEY environment variable is required!');
 }
 
 console.log('Starting GitHub organization metrics fetcher');
@@ -140,7 +134,6 @@ for (const orgName of configOrganizationName) {
     addIssueAndPrData,
     addDiscussionData,
     addIssueMetricsData,
-    addDownloadsPePy,
     addCondaData
   );
 
