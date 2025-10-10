@@ -52,12 +52,6 @@ type Filter = {
   licenseName?: Record<string, boolean>;
   topics?: Record<string, boolean>;
   starsCount?: Array<number | undefined>;
-  dailyDownloadCount?: Array<number | undefined>;
-  weeklyDownloadCount?: Array<number | undefined>;
-  monthlyDownloadCount?: Array<number | undefined>;
-  totalDownloadCount?: Array<number | undefined>;
-  condaMonthlyDownloads?: Array<number | undefined>;
-  condaTotalDownloads?: Array<number | undefined>;
   contributorsCount?: Array<number | undefined>;
   collaboratorsCount?: Array<number | undefined>;
   watchersCount?: Array<number | undefined>;
@@ -103,24 +97,18 @@ const dropdownOptions = (
 ): SelectOption[] => {
   let options = [];
   if (field === 'topics') {
-    options = Array.from(
-      new Set(repos.flatMap((repo) => repo.topics)),
-    ).sort();
+    options = Array.from(new Set(repos.flatMap((repo) => repo.topics))).sort();
   } else {
     options = Array.from(new Set(repos.map((repo) => repo[field])));
   }
   return options
     .map((fieldName) => ({
       // some fields are boolean (hasXxEnabled), so we need to convert them to strings
-      label:
-        typeof fieldName === 'boolean' ? fieldName.toString() : fieldName,
-      value:
-        typeof fieldName === 'boolean' ? fieldName.toString() : fieldName,
+      label: typeof fieldName === 'boolean' ? fieldName.toString() : fieldName,
+      value: typeof fieldName === 'boolean' ? fieldName.toString() : fieldName,
     }))
     .filter((fieldName) =>
-      (fieldName.value as string)
-        .toLowerCase()
-        .includes(filter.toLowerCase()),
+      (fieldName.value as string).toLowerCase().includes(filter.toLowerCase()),
     );
 };
 
@@ -141,11 +129,11 @@ type Comparator = (a: RepositoryResult, b: RepositoryResult) => number;
 
 // Wrapper for rendering column header cell
 const HeaderCellRenderer = <R = unknown,>({
-                                            tabIndex,
-                                            column,
-                                            children: filterFunction,
-                                            sortDirection,
-                                          }: RenderHeaderCellProps<R> & {
+  tabIndex,
+  column,
+  children: filterFunction,
+  sortDirection,
+}: RenderHeaderCellProps<R> & {
   children: (args: { tabIndex: number; filters: Filter }) => ReactElement;
 }) => {
   const filters = useContext(FilterContext)!;
@@ -202,7 +190,6 @@ const HeaderCellRenderer = <R = unknown,>({
     </div>
   );
 };
-
 
 // Renderer for the min/max filter inputs
 const MinMaxRenderer: FC<{
@@ -267,7 +254,6 @@ const MinMaxRenderer: FC<{
   );
 };
 
-
 // Renderer for the searchable select filter
 const SearchableSelectRenderer: FC<{
   headerCellProps: RenderHeaderCellProps<RepositoryResult>;
@@ -308,12 +294,7 @@ const SearchableSelectRenderer: FC<{
                     ...otherFilters,
                     [filterName]: {
                       ...otherFilters[filterName],
-                      all: !getSelectedOption(
-                        filters,
-                        filterName,
-                        'all',
-                        true,
-                      ),
+                      all: !getSelectedOption(filters, filterName, 'all', true),
                     },
                   }));
                 }}
@@ -414,12 +395,6 @@ const getComparator = (sortColumn: keyof RepositoryResult): Comparator => {
     case 'discussionsCount':
     case 'forksCount':
     case 'starsCount':
-    case 'dailyDownloadCount':
-    case 'weeklyDownloadCount':
-    case 'monthlyDownloadCount':
-    case 'totalDownloadCount':
-    case 'condaMonthlyDownloads':
-    case 'condaTotalDownloads':
     case 'contributorsCount':
     case 'totalIssuesCount':
     case 'mergedPullRequestsCount':
@@ -566,54 +541,6 @@ const RepositoriesTable = ({ orgName }: RepositoryTableProps) => {
           filters={globalFilters}
           updateFilters={setGlobalFilters}
           filterName="starsCount"
-        />
-      ),
-    },
-    'Monthly Downloads': {
-      key: 'monthlyDownloadCount',
-      name: 'Monthly Downloads',
-      renderHeaderCell: (p) => (
-        <MinMaxRenderer
-          headerCellProps={p}
-          filters={globalFilters}
-          updateFilters={setGlobalFilters}
-          filterName="monthlyDownloadCount"
-        />
-      ),
-    },
-    'Total Downloads': {
-      key: 'totalDownloadCount',
-      name: 'Total Downloads',
-      renderHeaderCell: (p) => (
-        <MinMaxRenderer
-          headerCellProps={p}
-          filters={globalFilters}
-          updateFilters={setGlobalFilters}
-          filterName="totalDownloadCount"
-        />
-      ),
-    },
-    'Monthly Conda Downloads': {
-      key: 'condaMonthlyDownloads',
-      name: 'Monthly Conda Downloads',
-      renderHeaderCell: (p) => (
-        <MinMaxRenderer
-          headerCellProps={p}
-          filters={globalFilters}
-          updateFilters={setGlobalFilters}
-          filterName="condaMonthlyDownloads"
-        />
-      ),
-    },
-    'Total Conda Downloads': {
-      key: 'condaTotalDownloads',
-      name: 'Total Conda Downloads',
-      renderHeaderCell: (p) => (
-        <MinMaxRenderer
-          headerCellProps={p}
-          filters={globalFilters}
-          updateFilters={setGlobalFilters}
-          filterName="condaTotalDownloads"
         />
       ),
     },
@@ -923,15 +850,15 @@ const RepositoriesTable = ({ orgName }: RepositoryTableProps) => {
             : true) &&
           (globalFilters.condaMonthlyDownloads
             ? (globalFilters.condaMonthlyDownloads?.[0] ?? 0) <=
-            repo.condaMonthlyDownloads &&
-            repo.condaMonthlyDownloads <=
-            (globalFilters.condaMonthlyDownloads[1] ?? Infinity)
+                repo.condaMonthlyDownloads &&
+              repo.condaMonthlyDownloads <=
+                (globalFilters.condaMonthlyDownloads[1] ?? Infinity)
             : true) &&
           (globalFilters.condaTotalDownloads
             ? (globalFilters.condaTotalDownloads?.[0] ?? 0) <=
-            repo.condaTotalDownloads &&
-            repo.condaTotalDownloads <=
-            (globalFilters.condaTotalDownloads[1] ?? Infinity)
+                repo.condaTotalDownloads &&
+              repo.condaTotalDownloads <=
+                (globalFilters.condaTotalDownloads[1] ?? Infinity)
             : true) &&
           (globalFilters.contributorsCount
             ? (globalFilters.contributorsCount?.[0] ?? 0) <=
