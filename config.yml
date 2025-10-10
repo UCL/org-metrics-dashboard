@@ -1,6 +1,6 @@
 ---
 # Organization to pull metrics from (must be an array)
-organization: ['ucl']
+organization: ['ucl', 'ucl-arc', 'ucl-isd']
 
 # Start date to pull metrics from
 since: '2018-01-02'
