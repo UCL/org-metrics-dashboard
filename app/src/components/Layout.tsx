@@ -13,14 +13,14 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
   const router = useRouter();
   const [showBanner, setShowBanner] = useLocalStorage('show-banner', false);
   const isSSR = useIsSSR();
-  const orgName = 'SWC/GCNU Neuroinformatics Unit Open Source Dashboard';
+  const orgName = 'UCL Open Source Dashboard';
 
   return (
     <main className="px-18 py-18 h-full flex flex-col">
       <Box className="flex flex-row items-center gap-6">
         <Image
           className="block h-8 w-auto"
-          src={`${basePath}/images/SWC_Logo_4C_Grey.png`}
+          src={`${basePath}/images/ucl-wb.svg`}
           height={50}
           width={150}
           alt="BrainGlobe logo"
@@ -62,7 +62,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
           href={`${basePath}/`}
           selected={!router.pathname.includes('documentation')}
         >
-          NIU Repositories
+          @UCL Repositories
         </TabNav.Link>
         <TabNav.Link
           href={`${basePath}/documentation`}
