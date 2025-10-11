@@ -23,7 +23,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
           src={`${basePath}/images/ucl-dark-light-mode-adaptive.svg`}
           height={50}
           width={150}
-          alt="BrainGlobe logo"
+          alt="UCL logo"
         />
         <Text as="h1" className="font-semibold text-xl">
           {orgName}
