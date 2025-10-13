@@ -1,5 +1,3 @@
-## The UCL Open Source Metrics Dashboard
-
 This dashboard is a snapshot of data about open source software from some of UCL's GitHub organisations.
 All the metrics are based on the _Last Updated Date_ reflected on the top of the dashboard.
 It is maintained by the [Open Source Team](https://github-pages.ucl.ac.uk/open-source) in the [Centre for Advanced Research Computing](https://ucl.ac.uk/arc).
