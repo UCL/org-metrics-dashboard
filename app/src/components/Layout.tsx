@@ -20,10 +20,10 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
       <Box className="flex flex-row items-center gap-6">
         <Image
           className="block h-8 w-auto"
-          src={`${basePath}/images/ucl-wb.svg`}
+          src={`${basePath}/images/ucl-dark-light-mode-adaptive.svg`}
           height={50}
           width={150}
-          alt="BrainGlobe logo"
+          alt="UCL logo"
         />
         <Text as="h1" className="font-semibold text-xl">
           {orgName}
