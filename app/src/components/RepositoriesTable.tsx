@@ -836,30 +836,6 @@ const RepositoriesTable = ({ orgName }: RepositoryTableProps) => {
             ? (globalFilters.starsCount?.[0] ?? 0) <= repo.starsCount &&
               repo.starsCount <= (globalFilters.starsCount[1] ?? Infinity)
             : true) &&
-          (globalFilters.totalDownloadCount
-            ? (globalFilters.totalDownloadCount?.[0] ?? 0) <=
-                repo.totalDownloadCount &&
-              repo.totalDownloadCount <=
-                (globalFilters.totalDownloadCount[1] ?? Infinity)
-            : true) &&
-          (globalFilters.monthlyDownloadCount
-            ? (globalFilters.monthlyDownloadCount?.[0] ?? 0) <=
-                repo.monthlyDownloadCount &&
-              repo.monthlyDownloadCount <=
-                (globalFilters.monthlyDownloadCount[1] ?? Infinity)
-            : true) &&
-          (globalFilters.condaMonthlyDownloads
-            ? (globalFilters.condaMonthlyDownloads?.[0] ?? 0) <=
-                repo.condaMonthlyDownloads &&
-              repo.condaMonthlyDownloads <=
-                (globalFilters.condaMonthlyDownloads[1] ?? Infinity)
-            : true) &&
-          (globalFilters.condaTotalDownloads
-            ? (globalFilters.condaTotalDownloads?.[0] ?? 0) <=
-                repo.condaTotalDownloads &&
-              repo.condaTotalDownloads <=
-                (globalFilters.condaTotalDownloads[1] ?? Infinity)
-            : true) &&
           (globalFilters.contributorsCount
             ? (globalFilters.contributorsCount?.[0] ?? 0) <=
                 repo.contributorsCount &&
