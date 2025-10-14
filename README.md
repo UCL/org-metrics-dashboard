@@ -10,4 +10,3 @@ It is a fork from [GitHub community projects](https://github-community-projects.
 ## License
 
 This project is licensed under the terms of the MIT open source license. Please refer to [MIT](./LICENSE.md) for the full terms.
-
