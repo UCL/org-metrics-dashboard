@@ -68,7 +68,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
           @UCL Repositories
         </TabNav.Link>
         <TabNav.Link
-          href={`${basePath}/arc`}
+          href={`${basePath}/ucl-arc`}
           selected={router.pathname.includes('ucl-arc')}
         >
           @UCL-ARC Repositories
