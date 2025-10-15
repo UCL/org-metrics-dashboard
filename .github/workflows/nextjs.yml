@@ -15,9 +15,6 @@ permissions:
   contents: read
   pages: write
   id-token: write
-env:
-  GRAPHQL_TOKEN: ${{ secrets.GRAPHQL_TOKEN }}
-  ORGANIZATION_NAME: ${{ vars.ORGANIZATION_NAME }}
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
@@ -27,7 +24,13 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 120
     steps:
+      - uses: actions/create-github-app-token@67018539274d69449ef7c02e8e71183d1719ab42 # v2.1.4
+        id: generate_token
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v4
       - name: Setup Node
@@ -37,18 +40,15 @@ jobs:
       - name: Get current date
         id: date
         run: echo "DATE=$(date +'%Y-%m')" >> $GITHUB_ENV
-      - name: Restore conda downloads cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.dashboard
-          key: conda-download-cache-${{ env.DATE }}
       - name: Collect metrics and save output
         id: metrics
         run: |
           cd backend
           npm i
           npm run dev
+        env:
+          ORGANIZATION_NAME: ${{ vars.ORGANIZATION_NAME }}
+          GRAPHQL_TOKEN: ${{ steps.generate_token.outputs.token }}
       - name: Detect package manager
         id: detect-package-manager
         run: |
