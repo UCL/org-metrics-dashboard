@@ -60,9 +60,18 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
       <TabNav aria-label="Main" className="mt-8">
         <TabNav.Link
           href={`${basePath}/`}
-          selected={!router.pathname.includes('documentation')}
+          selected={
+            !router.pathname.includes('documentation') &&
+            !router.pathname.includes('ucl-arc')
+          }
         >
           @UCL Repositories
+        </TabNav.Link>
+        <TabNav.Link
+          href={`${basePath}/ucl-arc`}
+          selected={router.pathname.includes('ucl-arc')}
+        >
+          @UCL-ARC Repositories
         </TabNav.Link>
         <TabNav.Link
           href={`${basePath}/documentation`}
