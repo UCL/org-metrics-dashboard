@@ -13,7 +13,7 @@ If you want to contribute some UCL-specific suggestions to _this_ UCL dashboard 
 Please [open an issue] or submit a pull request to this repository.
 
 If you've got ideas for general improvements, that's great!
-But it might be better to [suggest them upstream](https://github.com/github-community-projects/org-metrics-dashboard/CONTRIBUTING.md).
+But it might be better to [suggest them upstream](https://github.com/github-community-projects/org-metrics-dashboard/blob/main/CONTRIBUTING.md).
 
 Contributions to this project - both here and upstream - are [released](https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license) to the public under the [project's open source license](LICENSE.md).
 

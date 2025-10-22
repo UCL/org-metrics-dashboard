@@ -1,5 +1,5 @@
 [upstream]: https://github.com/github-community-projects/org-metrics-dashboard
-[their security reporting instructions]: https://github.com/github-community-projects/org-metrics-dashboard?tab=security-ov-file
+[their security reporting instructions]: https://github.com/github-community-projects/org-metrics-dashboard/blob/main/SECURITY.md
 
 Our dashboard is a fork from [GitHub community projects][upstream].
 If you believe you have found a security vulnerability specific to this repository, please email [open.source@ucl.ac.uk](mailto:open.source@ucl.ac.uk).
