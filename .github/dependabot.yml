@@ -20,8 +20,8 @@ updates:
     commit-message:
       prefix: 'chore(deps)'
     groups:
-      patterns: "*"
       dependencies:
+        patterns: "*"
         applies-to: version-updates
         update-types:
           - 'minor'
