@@ -21,7 +21,8 @@ updates:
       prefix: 'chore(deps)'
     groups:
       dependencies:
-        patterns: "*"
+        patterns:
+          - "*"
         applies-to: version-updates
         update-types:
           - 'minor'
