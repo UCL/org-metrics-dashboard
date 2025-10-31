@@ -1,14 +1,24 @@
 # Contributing
 
-[fork]: https://github.com/github-community-projects/org-metrics-dashboard/fork
-[pr]: https://github.com/github-community-projects/org-metrics-dashboard/compare
+[upstream]: https://github.com/github-community-projects/org-metrics-dashboard
+[open an issue]: https://github.com/UCL/open-source-dashboard/issues
+[fork]: https://github.com/UCL/open-source-dashboard/fork
+[pr]: https://github.com/UCL/open-source-dashboard/compare
 [code-of-conduct]: CODE_OF_CONDUCT.md
 
-Hi there! We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great.
+Thanks for your interest in our dashboard!
+It is a fork from [GitHub community projects][upstream].
 
-Contributions to this project are [released](https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license) to the public under the [project's open source license](LICENSE.md).
+If you want to contribute some UCL-specific suggestions to _this_ UCL dashboard you're very welcome!
+Please [open an issue] or submit a pull request to this repository.
 
-Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+If you've got ideas for general improvements, that's great!
+But it might be better to [suggest them upstream](https://github.com/github-community-projects/org-metrics-dashboard/blob/main/CONTRIBUTING.md).
+
+Contributions to this project - both here and upstream - are [released](https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license) to the public under the [project's open source license](LICENSE.md).
+
+Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+By participating in this project you agree to abide by its terms.
 
 ## Submitting a pull request
 
